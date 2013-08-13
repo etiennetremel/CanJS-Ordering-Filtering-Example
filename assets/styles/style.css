@@ -1,0 +1,132 @@
+body {
+  padding: 10px;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+.filters {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+.filters span {
+  background: #eeeeee;
+  border: 1px solid #dddddd;
+  padding: 5px;
+  margin-right: 10px;
+}
+#wrap {
+  width: 100%;
+  display: inline-block;
+}
+.albums {
+  position: relative;
+  z-index: 9;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  list-style-type: none;
+  line-height: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-perspective: 200;
+  -webkit-perspective-origin: 50% 50%;
+  perspective: 200;
+  perspective-origin: 50% 50%;
+}
+.albums li {
+  float: left;
+  display: inline-block;
+  text-align: left;
+  opacity: 1;
+  margin: 0 10px 10px;
+  padding: 0.5em;
+  width: 130px;
+  height: 220px;
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75em;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: rotateX(0deg) rotateY(0deg);
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.albums li.hide {
+  -webkit-transform: rotateX(180deg) rotateY(180deg);
+  transform: rotateX(180deg) rotateY(180deg);
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  opacity: 0;
+  font-size: 0;
+  border: 0;
+}
+.albums li .thumbnail img {
+  max-width: 100%;
+  height: auto;
+}
+.albums li p {
+  font-size: .8em;
+  line-height: 1.2em;
+  margin: 0.5em 0;
+}
+.albums li p.title {
+  font-weight: bold;
+}
+.albums li p.artist {
+  font-size: 0.6em;
+  font-style: italic;
+}
+#single-album {
+  width: 350px;
+  position: fixed;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: #222222;
+  color: white;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+#single-album.hide {
+  -webkit-transform: translate(350px, 0);
+}
+#single-album .close {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  background: #888888;
+  color: white;
+  text-transform: uppercase;
+  padding: 0.5em;
+}
+#single-album .cover {
+  margin-bottom: 2em;
+}
+#single-album td,
+#single-album tr {
+  color: white;
+}

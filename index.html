@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>CanJS: sorting and filtering datas</title>
+
+        <link rel="stylesheet" type="text/css" href="assets/styles/style.css" />
+        <script src="assets/scripts/require.js" data-main="assets/scripts/main" ></script>
+    </head>
+    <body>
+
+        <div id="wrap"></div>
+        <div id="single-album" class="hide"></div>
+
+        <script type="text/ejs" id="listAlbums">
+            <div class="filters">
+                <p><span class="filter reset">Reset</span></p>
+                <p>Order By: <span class="filter order-desc">Order DESC</span> <span class="filter order-asc">Order ASC</span></p>
+                <p>
+                    Label:
+                    <select id="filter-by-label">
+                        <option>All</option>
+                        <% list(datas.Labels, function(label){ %>
+                        <option><%= label %></option>
+                        <% }); %>
+                    </select>
+                </p>
+                <p>
+                    Genre:
+                    <select id="filter-by-genre">
+                        <option>All</option>
+                        <% list(datas.Genres, function(genre){ %>
+                        <option><%= genre %></option>
+                        <% }); %>
+                    </select>
+                </p>
+                <p>Price: <span class="filter less-than-5">price < $5</span> <span class="filter between-5-and-10">price > $5 > and price < $10</span> <span class="filter more-than-10">price > $10</span></p>
+            </div>
+            <ul class="albums">
+            <% list(datas.Albums, function(album){ %>
+                <li class="<%= (album.attr('visible')) ? '' : 'hide'; %>">
+                    <div class="thumbnail">
+                        <img src="assets/images/<%= album.cover[0] %>" alt="" />
+                    </div>
+                    <div class="details">
+                        <p class="title"><%= shortenize(album.title, 40) %></p>
+                        <p class="artist">by <%= shortenize(album.artist, 20) %></p>
+                    </div>
+                </li>
+            <% }); %>
+            </ul>
+        </script>
+
+        <script type="text/ejs" id="singleAlbum">
+            <div class="cover">
+                <img src="assets/images/<%= album.cover[0] %>" alt="" />
+            </div>
+            <h2><%= album.title %></h2>
+            <table border="0">
+                <tr><td>Artist</td><td><%= album.artist %></td></tr>
+                <tr><td>Label</td><td><%= album.label %></td></tr>
+                <tr><td>Number of disc</td><td><%= album.discs %></td></tr>
+                <tr><td>Release Date</td><td><%= album.released %></td></tr>
+                <tr><td>Total Length</td><td><%= album.length %></td></tr>
+                <tr><td>Genres</td><td><%= album.genres.join(', ') %></td></tr>
+                <tr><td>Price</td><td><%= album.price %></td></tr>
+            </table>
+            <div class="close">Close »</div>
+        </script>
+    </body>
+</html>
