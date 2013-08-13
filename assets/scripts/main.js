@@ -14,8 +14,9 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
     require(['can/util/library', 'can/control/route', 'can/model', 'can/view/ejs', 'can/route', 'can/util/string', 'can/util/object', 'can/util/fixture'], function (can) {
 
         // Hide and stop Spinner and
+        var spinner = this.spinner;
         $('#loader').fadeOut(function() {
-            this.spinner.stop();
+            spinner.stop();
         });
 
         // Extend List property to be able to sort datas
