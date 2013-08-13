@@ -8,16 +8,13 @@ require.config({
 require(['domReady', 'spin.min'], function (domReady, Spinner) {
     domReady(function() {
         // Dom ready, display spinner
-        this.spinner = new Spinner().spin(document.getElementById('loader'));
+        new Spinner().spin(document.getElementById('loader'));
     });
 
     require(['can/util/library', 'can/control/route', 'can/model', 'can/view/ejs', 'can/route', 'can/util/string', 'can/util/object', 'can/util/fixture'], function (can) {
 
-        // Hide and stop Spinner and
-        var spinner = this.spinner;
-        $('#loader').fadeOut(function() {
-            spinner.stop();
-        });
+        // Hide Spinner
+        $('#loader').fadeOut();
 
         // Extend List property to be able to sort datas
         $.extend(can.Observe.List.prototype, {
