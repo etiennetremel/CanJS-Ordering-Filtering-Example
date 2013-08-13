@@ -10,16 +10,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #dddddd;
-  opacity: 1;
-  -webkit-transition: opacity 500ms ease-in-out;
-  -moz-transition: opacity 500ms ease-in-out;
-  -ms-transition: opacity 500ms ease-in-out;
-  -o-transition: opacity 500ms ease-in-out;
-  transition: opacity 500ms ease-in-out;
-}
-#loader.hide {
-  opacity: 0;
+  background: #eeeeee;
 }
 .filters {
   position: relative;
