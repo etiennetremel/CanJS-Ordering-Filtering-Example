@@ -12,6 +12,8 @@
 
     </head>
     <body>
+        <a href="https://github.com/etiennetremel/CanJS-Ordering-Filtering-Example"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
         <div id="loader"></div>
 
         <div id="wrap"></div>
@@ -39,6 +41,21 @@
                         <% }); %>
                     </select>
                 </p>
+                <p>Disc: <label for="disc_1"><input type="radio" name="disc" data-key="discs" id="disc_1" value="1" /> 1</label> <label for="disc_2"><input type="radio" name="disc" data-key="discs" id="disc_2" value="2" /> 2</label></p>
+                <p>
+                <p>Genre:
+                    <label for="genre_1"><input type="checkbox" name="genre[]" id="genre_1" data-key="genres" value="Pop" checked="checked" /> Pop</label>
+                    <label for="genre_2"><input type="checkbox" name="genre[]" id="genre_2" data-key="genres" value="Dance & DJ" checked="checked" /> Dance & DJ</label>
+                    <label for="genre_3"><input type="checkbox" name="genre[]" id="genre_3" data-key="genres" value="Blues" checked="checked" /> Blues</label>
+                    <label for="genre_4"><input type="checkbox" name="genre[]" id="genre_4" data-key="genres" value="Country" checked="checked" /> Country</label>
+                    <label for="genre_5"><input type="checkbox" name="genre[]" id="genre_5" data-key="genres" value="Jazz" checked="checked" /> Jazz</label>
+                    <label for="genre_6"><input type="checkbox" name="genre[]" id="genre_6" data-key="genres" value="Rap" checked="checked" /> Rap</label>
+                    <label for="genre_7"><input type="checkbox" name="genre[]" id="genre_7" data-key="genres" value="Hip-Hop" checked="checked" /> Hip-Hop</label>
+                    <label for="genre_8"><input type="checkbox" name="genre[]" id="genre_8" data-key="genres" value="Rock" checked="checked" /> Rock</label>
+                    <label for="genre_9"><input type="checkbox" name="genre[]" id="genre_9" data-key="genres" value="Alternative Rock" checked="checked" /> Alternative Rock</label>
+                    <label for="genre_10"><input type="checkbox" name="genre[]" id="genre_10" data-key="genres" value="Hard Rock & Metal" checked="checked" /> Hard Rock & Metal</label>
+                </p>
+                <p>
                 <p>Price: <span class="filter less-than-5">price < $5</span> <span class="filter between-5-and-10">price > $5 > and price < $10</span> <span class="filter more-than-10">price > $10</span></p>
             </div>
             <ul class="albums">

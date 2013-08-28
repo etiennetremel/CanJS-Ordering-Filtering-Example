@@ -92,11 +92,21 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }));
                 });
             },
+
+            // Reset
             '.filter.reset click': function (el, ev) {
+                // Reset form state
+                $('input[type=radio]').removeAttr('checked');
+                $('input[type=checkbox]').attr('checked', 'checked');
+                $('select').find('option').removeAttr('selected').first().attr('selected', 'selected');
+
+                // Make everything visible
                 $.each(this.Datas.Albums, function (i, album) {
                     album.attr('visible', true);
                 });
             },
+
+            // Price less than 5
             '.filter.less-than-5 click': function (el, ev) {
                 $.each(this.Datas.Albums, function (i, album) {
                     if (parseFloat(album.price) <= 5) {
@@ -106,6 +116,8 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }
                 });
             },
+
+            // Price between 5 and 10
             '.filter.between-5-and-10 click': function (el, ev) {
                 $.each(this.Datas.Albums, function (i, album) {
                     if (parseFloat(album.price) > 5 && parseFloat(album.price) < 10) {
@@ -115,6 +127,8 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }
                 });
             },
+
+            // Price more than 10
             '.filter.more-than-10 click': function (el, ev) {
                 $.each(this.Datas.Albums, function (i, album) {
                     if (parseFloat(album.price) >= 10) {
@@ -124,20 +138,28 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }
                 });
             },
+
+            // Order DESC
             '.filter.order-desc click': function (el, ev) {
                 var self = this;
+
                 self.Datas.Albums.sort('order');
                 self.element.find('#wrap').html(can.view('listAlbums', {
                     datas: self.Datas
                 }));
             },
+
+            // Order ASC
             '.filter.order-asc click': function (el, ev) {
                 var self = this;
+
                 self.Datas.Albums.sort('order', true);
                 self.element.find('#wrap').html(can.view('listAlbums', {
                     datas: self.Datas
                 }));
             },
+
+            // Filter by Label
             '#filter-by-label change': function (el, ev) {
                 var value = el.find(':selected').val();
 
@@ -149,6 +171,8 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }
                 });
             },
+
+            // Filter by Genre
             '#filter-by-genre change': function (el, ev) {
                 var value = el.find(':selected').val();
 
@@ -160,6 +184,36 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                     }
                 });
             },
+
+            // Radio
+            'input[type=radio] change': function (el, ev) {
+              var key = el.data('key');
+
+                $.each(this.Datas.Albums, function (i, album) {
+                    if (el.is(':checked') && album[key] === el.val()) {
+                        album.attr('visible', true);
+                    } else {
+                        album.attr('visible', false);
+                    }
+                });
+            },
+
+            // Checkbox
+            'input[type=checkbox] change': function (el, ev) {
+                var key = el.data('key');
+
+                $.each(this.Datas.Albums, function (i, album) {
+                    if ($.inArray(el.val(), can.makeArray(album[key])) > -1) {
+                        if(el.is(':checked')) {
+                            album.attr('visible', true);
+                        } else {
+                            album.attr('visible', false);
+                        }
+                    }
+              });
+            },
+
+            // Show Album details on click
             'ul.albums li click': function (el, ev) {
                 var self = this;
                 self.element.find('#single-album').html(can.view('singleAlbum', {
@@ -167,6 +221,8 @@ require(['domReady', 'spin.min'], function (domReady, Spinner) {
                 }));
                 $('#single-album').removeClass('hide');
             },
+
+            // Close details
             '#single-album .close click': function (el, ev) {
                 $('#single-album').addClass('hide');
             }
